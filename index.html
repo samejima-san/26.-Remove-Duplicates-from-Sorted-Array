@@ -1,0 +1,47 @@
+<head></head>
+<body>
+    <script>
+        var removeDuplicates = function(nums) {
+        let leftPointer = 0
+        let rightPointer = 1
+
+        while(leftPointer !== rightPointer){
+            if(nums[leftPointer] === nums[rightPointer]){
+                nums[rightPointer] = "_"
+            }
+            else if(rightPointer === nums.length -1){
+                leftPointer++
+                while(nums[leftPointer] === "_"){leftPointer++}
+                rightPointer = leftPointer+1
+                if(rightPointer >= nums.length){ return magicSwap(nums) }
+                }
+                else{
+                rightPointer++
+                }
+        }
+        return nums
+        };
+
+        function magicSwap(nums){
+        let leftPointer = 0
+        let rightPointer = 1
+        while(leftPointer !== rightPointer){
+            if(nums[leftPointer] === "_" && typeof nums[rightPointer] === 'number'){//this swaps
+            [nums[leftPointer], nums[rightPointer]] = [nums[rightPointer], nums[leftPointer]]
+            }
+            else if(typeof nums[leftPointer] === 'number' && typeof nums[rightPointer] === 'number'){
+            leftPointer++
+            }
+            else if(nums[leftPointer] === "_"){
+            leftPointer++
+            rightPointer++
+            }
+            else if(rightPointer === nums.length){
+            return nums
+            }
+            else{rightPointer++}
+        }
+        }
+        
+    </script>
+</body>
